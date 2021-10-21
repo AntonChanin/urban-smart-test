@@ -1,23 +1,27 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
+import { store } from './components/app/store';
 import Login from './components/login/Login';
 import Profile from './components/profile/Profile';
-import { selectUser } from './features/userSlice';
 
 function App() {
-  const user = useSelector(selectUser);
+  const user = store.subscribe(() => store.getState()?.user);
+
   return (
+
     <BrowserRouter>
-      <div className="App">
-        <Switch>
-          <Route exact path="/" component={Login} />
-          {user && <Route path="/profile" component={Profile} />}
-          <Redirect to="/" />
-        </Switch>
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <Switch>
+            <Route exact path="/" component={Login} />
+            {user && <Route path="/profile" component={Profile} />}
+            <Redirect to="/" />
+          </Switch>
+        </div>  </Provider>
     </BrowserRouter>
+
   );
 }
 

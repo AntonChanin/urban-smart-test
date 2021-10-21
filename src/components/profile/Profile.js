@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { logout } from '../../features/userSlice';
 import { store } from '../app/store';
 import './Profile.css';
 
@@ -10,10 +9,11 @@ const Profile = (props) => {
 
   const handleLogout = e => {
     e.preventDefault();
-    dispatch(logout());
-    props.history.push('/return-to-login');
+    dispatch({ type: 'LOGOUT', payload: null });
   }
-  const { name, email, avatar } = store.getState().user.user;
+  store.subscribe(() => props.history.push('/'));
+
+  const { name, email, avatar } = store.getState().user;
   return (
     <div className="profile">
       <h1>User profile</h1>

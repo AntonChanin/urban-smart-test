@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { login } from '../../features/userSlice';
+import { store } from '../app/store';
 import './Login.css';
 
 const Login = (props) => {
@@ -13,17 +13,10 @@ const Login = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    dispatch({ type: 'LOGIN', payload: { name, email, password, loggedIn: true } });
 
-    dispatch(
-      login({
-        name: name,
-        email: email,
-        password: password,
-        loggedIn: true,
-      })
-    );
-    props.history.push('/profile');
   }
+  store.subscribe(() => props.history.push('/profile'));
 
   const handleNameChange = e => setName(e.target.value);
   const handleEmailChange = e => setEmail(e.target.value);

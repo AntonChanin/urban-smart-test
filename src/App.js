@@ -1,15 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { useSelector } from 'react-redux';
 import './App.css';
+import Login from './components/login/Login';
+import Profile from './components/profile/Profile';
+import { selectUser } from './features/userSlice';
 
 function App() {
+  const user = useSelector(selectUser);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
       </header>
+      {!user ? <Login /> : <Profile />}
     </div>
   );
 }

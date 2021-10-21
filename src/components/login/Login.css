@@ -4,12 +4,13 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  font-family: 'Inter';
+  font-family: 'Roboto';
 }
 
 .login__form {
   display: flex;
   flex-direction: column;
+  width: 350px;
 }
 
 .login__form > h1 {
@@ -20,14 +21,19 @@
 }
 
 .login__form > input {
-  min-width: 300px;
   padding: 20px 0 20px 15px;
-  margin-bottom: 10px;
+  margin-bottom: 24px;
   outline: none;
   border: 1px solid rgba(0, 0, 0, 0.24);
-  font-family: 'Inter';
+  font-family: 'Roboto';
   border-radius: 2px;
-  font-size: 15px;
+  font-size: 21px;
+}
+
+.login__form > input:focus {
+  -webkit-box-shadow: 7px 7px 0px 5px rgba(255, 165, 0, 1), -7px -7px 0px 5px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 7px 7px 0px 5px rgba(255, 165, 0, 1), -7px -7px 0px 5px rgba(0, 0, 0, 1);
+  box-shadow: 7px 7px 0px 5px rgba(255, 165, 0, 1), -7px -7px 0px 5px rgba(0, 0, 0, 1);
 }
 
 .submit__btn {
@@ -36,7 +42,14 @@
   background-color: #000;
   border: none;
   color: #fff;
-  font-size: 14px;
-  font-family: 'Inter';
+  font-size: 22px;
+  font-family: 'Roboto';
+  font-weight: bold;
   border-radius: 3px;
+}
+
+@media (max-width: 375px) {
+  .login__form {
+    width: 240px;
+  }
 }

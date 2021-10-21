@@ -57,7 +57,7 @@ const Login = (props) => {
           onChange={handlePasswordChange}
         />
         <button type="submit" className="submit__btn" disabled={!isEnabled}>
-          Submit
+          SUBMIT
         </button>
       </form>
     </div >

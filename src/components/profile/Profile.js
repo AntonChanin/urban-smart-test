@@ -13,15 +13,21 @@ const Profile = (props) => {
     dispatch(logout());
     props.history.push('/return-to-login');
   }
-  const { name, email } = store.getState().user.user;
+  const { name, email, avatar } = store.getState().user.user;
   return (
     <div className="profile">
+      <h1>User profile</h1>
+      <button className="profile__avatar">
+        <img alt="" src={avatar} />
+      </button>
       <h1>
         {name}
       </h1>
-      <p>{email}</p>
-      <button className="logout__button" onClick={handleLogout}>
-        Logout
+      <div className="profile__email">
+        <div>User email:</div><div>{email}</div>
+      </div>
+      <button className="profile__logout-button" onClick={handleLogout}>
+        LOGOUT
       </button>
     </div>
   )

@@ -1,21 +1,53 @@
-.logout {
+.profile {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 350px;
   height: 100vh;
-  font-family: 'Inter';
+  font-family: 'Roboto';
+  margin: auto;
 }
 
-.logout__button {
+.profile > button.profile__avatar > img {
+  width: 326px;
+  height: 350px;
+  background-color: #d3d3d3;
+  
+}
+
+button.profile__avatar {
+  border-radius: 2px;
+  background-color: #0000;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  width: 326px;
+  height: 350px;
+}
+
+.profile > button.profile__avatar:focus {
+  -webkit-box-shadow: 7px 7px 0px 5px rgba(255, 165, 0, 1), -7px -7px 0px 5px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 7px 7px 0px 5px rgba(255, 165, 0, 1), -7px -7px 0px 5px rgba(0, 0, 0, 1);
+  box-shadow: 7px 7px 0px 5px rgba(255, 165, 0, 1), -7px -7px 0px 5px rgba(0, 0, 0, 1);
+}
+
+.profile__email {
+  width: inherit;
+  display: inherit;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.profile__logout-button {
   min-width: 300px;
   padding: 17px 30px;
   margin-top: 20px;
   background-color: #000;
   border: none;
   color: #fff;
-  font-size: 14px;
-  font-family: 'Inter';
+  font-size: 21px;
+  font-family: 'Roboto';
   border-radius: 3px;
 }
 

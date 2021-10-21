@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { login } from '../../features/userSlice';
 import './Login.css';
 
-const Login = () => {
+const Login = (props) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,7 +22,17 @@ const Login = () => {
         loggedIn: true,
       })
     );
+    props.history.push('/profile');
   }
+
+  const handleNameChange = e => setName(e.target.value);
+  const handleEmailChange = e => setEmail(e.target.value);
+  const handlePasswordChange = e => setPassword(e.target.value);
+
+  const canBeSubmitted = () => {
+    return name.length && email.length > 0 && password.length > 0;
+  }
+  const isEnabled = canBeSubmitted();
 
   return (
     <div className="login">
@@ -31,26 +42,26 @@ const Login = () => {
           type="name"
           placeholder="Name"
           value={name}
-          onChange={e => setName(e.target.value)}
+          onChange={handleNameChange}
         />
         <input
           type="email"
           placeholder="Email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={handleEmailChange}
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={handlePasswordChange}
         />
-        <button type="submit" className="submit__btn" >
+        <button type="submit" className="submit__btn" disabled={!isEnabled}>
           Submit
         </button>
       </form>
-    </div>
+    </div >
   )
 }
 
-export default Login;
+export default withRouter(Login);

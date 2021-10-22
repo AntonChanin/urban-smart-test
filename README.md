@@ -42,3 +42,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## Note me - Stable version 
+If can use redux toolkit than 6a623fa commit return to valid version with @reduxjs/toolkit. Toolkit ver more clear than laset ver.

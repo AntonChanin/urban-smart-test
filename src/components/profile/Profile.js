@@ -12,8 +12,9 @@ const Profile = (props) => {
     dispatch({ type: 'LOGOUT', payload: null });
   }
   store.subscribe(() => props.history.push('/'));
+  !store.getState().user && props.history.push('/');
 
-  const { name, email, avatar } = store.getState().user;
+  const { name = '', email = '', avatar = '' } = store.getState().user;
   return (
     <div className="profile">
       <h1>User profile</h1>

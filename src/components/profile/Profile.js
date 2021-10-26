@@ -1,8 +1,17 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { store } from '../app/store';
 import './Profile.css';
+
+
+
+const mapStateToProps = function (state) {
+  return {
+    user: state.user,
+  }
+}
+
 
 const Profile = (props) => {
   const dispatch = useDispatch();
@@ -12,9 +21,8 @@ const Profile = (props) => {
     dispatch({ type: 'LOGOUT', payload: null });
   }
   store.subscribe(() => props.history.push('/'));
-  !store.getState().user && props.history.push('/');
 
-  const { name = '', email = '', avatar = '' } = store.getState().user;
+  const { name = '', email = '', avatar = '' } = props.user;
   return (
     <div className="profile">
       <h1>User profile</h1>
@@ -34,4 +42,4 @@ const Profile = (props) => {
   )
 }
 
-export default withRouter(Profile);
+export default connect(mapStateToProps)(withRouter(Profile));
